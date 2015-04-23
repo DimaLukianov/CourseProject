@@ -1,7 +1,0 @@
-                            ID|                          Name|                          Icon|                       Version|                       Windows|                          Unix|                           Mac|                  Release Date|
-
-                             1|                       Program|C:\softwareImage\mini_icon2.png|                           1.0|                          true|                          true|                         false|                    2015-04-14|
-                             9|                           wer|C:\softwareImage\mini_mini_Android_robot.png|                             2|                          true|                          true|                         false|                    2344-01-01|
-                            10|                        Player| C:\softwareImage\mini_img.jpg|                             3|                          true|                         false|                          true|                    2008-12-21|
-
-Date: 09.04.2015 12:55
