@@ -1,14 +1,15 @@
-package course.client;
+package course.server.main;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import course.view.*;
+import course.server.ServerUI;
 
-public class MainClient {
-	
+public class MainServer {
+
 	public static void main(String[] args) {
+		
 		try {
 			//windows style
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -17,13 +18,11 @@ public class MainClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		RecordsForm recordForm = new RecordsForm(); 
-
-		recordForm.setVisible(true);
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		JDialog.setDefaultLookAndFeelDecorated(true);
-		recordForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ServerUI s = new ServerUI();
+		s.setVisible(true);
+		s.pack();
+		s.setLocationRelativeTo(null);
+		s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }

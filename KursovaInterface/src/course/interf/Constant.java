@@ -6,5 +6,7 @@ public class Constant {
 	public static final String RMI_RECORD_ID = "RecordRMI";
 	public static final String RMI_REF_ID = "RefRMI";
 	public static final String RMI_SOFTWARE_ID = "SoftwareRMI";
-	public static final int RMI_PORT = 222;
+	public static final String RMI_INFO_ID = "InfoRMI";
+	public static String RMI_HOST = "localhost";
+	public static int RMI_PORT = 222;
 }

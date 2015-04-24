@@ -278,6 +278,8 @@ private void createToolBar() {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JDialog.setDefaultLookAndFeelDecorated(true);
 		getContentPane().setLayout(new BorderLayout());
+		pack();
+		setLocationRelativeTo(null);
 		
 		createMenu();
 		
@@ -516,7 +518,7 @@ private void createToolBar() {
 	}
 	
 	private IProducer getInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		IProducer producer = (IProducer) registry.lookup(Constant.RMI_PRODUCER_ID);
 		return producer.newInstance();
 	}

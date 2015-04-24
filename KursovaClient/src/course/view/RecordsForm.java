@@ -93,11 +93,13 @@ public class RecordsForm extends JFrame implements ActionListener {
 	
 	private NewRecordForm newRecordForm = new NewRecordForm();
 	
-	private SoftwareForm softwareForm = new SoftwareForm();
+//	private SoftwareForm softwareForm = new SoftwareForm();
 	
-	private ProducersForm producersForm = new ProducersForm();
+//	private ProducersForm producersForm = new ProducersForm();
 	
-	private LicencesForm licencesForm = new LicencesForm();
+//	private LicencesForm licencesForm = new LicencesForm();
+	
+//	private InfoForm infoForm = new InfoForm();
 	
 	private JMenuItem menuItemNew, menuItemUpdate, menuItemDelete, menuItemPrint, menuItemReport,
 	menuItemProducers, menuItemSoftware, menuItemLicenses, menuItemClose, menuItemHelp, menuItemAbout;
@@ -129,15 +131,15 @@ public class RecordsForm extends JFrame implements ActionListener {
 			reportRecord();
 
 		} else if (e.getSource() == menuItemProducers) {
-			
+			ProducersForm producersForm = new ProducersForm();
 			producersForm.setVisible(true);
 			
 		} else if (e.getSource() == menuItemSoftware) {
-			
+			SoftwareForm softwareForm = new SoftwareForm();
 			softwareForm.setVisible(true);
 			
 		} else if (e.getSource() == menuItemLicenses) {
-			
+			LicencesForm licencesForm = new LicencesForm();
 			licencesForm.setVisible(true);
 			
 		} else if (e.getSource() == menuItemClose) {
@@ -145,9 +147,11 @@ public class RecordsForm extends JFrame implements ActionListener {
 			System.exit(0);
 			
 		} else if (e.getSource() == menuItemHelp) {
-			//
+			InfoForm infoForm = new InfoForm();
+			infoForm.setVisible(true);
 		} else if (e.getSource() == menuItemAbout) {
-			//
+			InfoForm infoForm = new InfoForm();
+			infoForm.setVisible(true);
 		}
 		
 	}
@@ -228,6 +232,7 @@ public class RecordsForm extends JFrame implements ActionListener {
 		menuItemHelp = new JMenuItem("Help");
 		menuItemHelp.setName(OPEN_HELP_WINDOW);
 		menuItemHelp.setIcon(new ImageIcon("img/min_help.png"));
+		menuItemHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, Event.CTRL_MASK));
 		menuItemHelp.addActionListener(this);
 		menuInfo.add(menuItemHelp);
 		
@@ -359,18 +364,21 @@ public class RecordsForm extends JFrame implements ActionListener {
 	        producerButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent event) {
+	            	ProducersForm producersForm = new ProducersForm();
 	            	producersForm.setVisible(true);
 	            }
 	        });
 	        softwareButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent event) {
-	            	softwareForm.setVisible(true);
+	            	SoftwareForm softwareForm = new SoftwareForm();
+	    			softwareForm.setVisible(true);
 	            }
 	        });
 	        licenceButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent event) {
+	            	LicencesForm licencesForm = new LicencesForm();
 	            	licencesForm.setVisible(true);
 	            }
 	        });
@@ -386,6 +394,9 @@ public class RecordsForm extends JFrame implements ActionListener {
 	
 	public RecordsForm(){
 		getContentPane().setLayout(new BorderLayout());
+		pack();
+		setLocationRelativeTo(null);
+		
 		
 		createToolBar();
 		
@@ -612,7 +623,7 @@ public class RecordsForm extends JFrame implements ActionListener {
 	
 	
 	private IRecord getInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		IRecord record = (IRecord) registry.lookup(Constant.RMI_RECORD_ID);
 		return record.newInstance();
 	}

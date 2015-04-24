@@ -55,6 +55,7 @@ public class NewRecordForm extends JDialog {
 		setModal(true);
 		setResizable(false);
 		setLocationByPlatform(true);
+		setLocationRelativeTo(null);
 		
 		final JButton cmdSave = new JButton("Save");
 		final JButton cmdCancel = new JButton("Cancel");
@@ -196,13 +197,13 @@ public class NewRecordForm extends JDialog {
 	}
 	
 	private ILicence getLicenceInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		ILicence licence = (ILicence) registry.lookup(Constant.RMI_LICENCE_ID);
 		return licence.newInstance();
 	}
 	
 	private ISoftware getSoftwareInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		ISoftware software = (ISoftware) registry.lookup(Constant.RMI_SOFTWARE_ID);
 		return software.newInstance();
 	}

@@ -50,7 +50,9 @@ public class NewLicenceForm extends JDialog {
 		setTitle("Licence");
 		setSize(400, 200);
 		setModal(true);
-		setResizable(false);		
+		setResizable(false);
+		pack();
+		setLocationRelativeTo(null);
 		
 		final JButton cmdSave = new JButton("Save");
 		final JButton cmdCancel = new JButton("Cancel");

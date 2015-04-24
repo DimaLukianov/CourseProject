@@ -110,9 +110,9 @@ public class SoftwareForm extends JFrame implements ActionListener {
 	
 	private NewSoftwareForm newSoftwareForm = new NewSoftwareForm();
 	
-	private ProducersForm producersForm = new ProducersForm();
+//	private ProducersForm producersForm = new ProducersForm();
 	
-	private LicencesForm licencesForm = new LicencesForm();
+//	private LicencesForm licencesForm = new LicencesForm();
 	
 	private JMenuItem menuItemNew, menuItemUpdate, menuItemDelete, menuItemPrint, menuItemReport,
 	menuItemRefresh, menuItemProducers, menuItemLicenses, menuItemClose;
@@ -147,8 +147,10 @@ public class SoftwareForm extends JFrame implements ActionListener {
 			refreshData();
 
 		} else if (e.getSource() == menuItemProducers) {
+			ProducersForm producersForm = new ProducersForm();
 			producersForm.setVisible(true);
 		} else if (e.getSource() == menuItemLicenses) {
+			LicencesForm licencesForm = new LicencesForm();
 			licencesForm.setVisible(true);
 		} else if (e.getSource() == menuItemClose) {
 			this.setVisible(false);
@@ -353,6 +355,7 @@ public class SoftwareForm extends JFrame implements ActionListener {
         producerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+            	ProducersForm producersForm = new ProducersForm();
             	producersForm.setVisible(true);
             }
         });
@@ -360,6 +363,7 @@ public class SoftwareForm extends JFrame implements ActionListener {
         licenceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
+            	LicencesForm licencesForm = new LicencesForm();
             	licencesForm.setVisible(true);
             }
         });
@@ -372,6 +376,8 @@ public class SoftwareForm extends JFrame implements ActionListener {
 	@SuppressWarnings("unchecked")
 	public SoftwareForm(){
 		getContentPane().setLayout(new BorderLayout());
+		pack();
+		setLocationRelativeTo(null);
 		
 		createToolBar();
 		
@@ -474,11 +480,13 @@ public class SoftwareForm extends JFrame implements ActionListener {
 				
 		bShowAllProd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ProducersForm producersForm = new ProducersForm();
 				producersForm.setVisible(true);
 			}
 		});
 		bShowAllLicence.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LicencesForm licencesForm = new LicencesForm();
 				licencesForm.setVisible(true);
 			}
 		});
@@ -547,9 +555,9 @@ public class SoftwareForm extends JFrame implements ActionListener {
 		
 		newSoftwareForm = new NewSoftwareForm();
 		
-		producersForm = new ProducersForm();
+//		producersForm = new ProducersForm();
 		
-		licencesForm = new LicencesForm();
+//		licencesForm = new LicencesForm();
 		try {
 			loadProducersList();
 			softwareTableModel.setSoftwareList((List<ISoftware>) getInstance().all());
@@ -716,30 +724,18 @@ public class SoftwareForm extends JFrame implements ActionListener {
 	}
 	
 	private IProducer getProducerInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		IProducer producer = (IProducer) registry.lookup(Constant.RMI_PRODUCER_ID);
 		return producer;
 	}
 	
 	private ISoftware getInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		ISoftware software = (ISoftware) registry.lookup(Constant.RMI_SOFTWARE_ID);
 		
 		return software.newInstance();
 	}
 	
-	
-	
-//	private ProducerTableModel getTableModel() {
-//		try {
-//			return new ProducerTableModel(Producer.all());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			JOptionPane.showMessageDialog(this,
-//					"Помилка при заповненні таблиці груп: " + e.getMessage());
-//		}
-//		return new ProducerTableModel(new ArrayList<Producer>(0));
-//	}
 	
 	public static void main(String[] args) {
 		try {

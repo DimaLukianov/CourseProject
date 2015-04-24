@@ -75,6 +75,8 @@ public class NewSoftwareForm extends JDialog {
 		setSize(400, 400);
 		setModal(true);
 		setResizable(false);
+		pack();
+		setLocationRelativeTo(null);
 
 		final JButton cmdSave = new JButton("Save");
 		final JButton cmdCancel = new JButton("Cancel");
@@ -272,7 +274,7 @@ public class NewSoftwareForm extends JDialog {
 	}
 	
 	private IProducer getProducerInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		IProducer producer = (IProducer) registry.lookup(Constant.RMI_PRODUCER_ID);
 		return producer;
 	}

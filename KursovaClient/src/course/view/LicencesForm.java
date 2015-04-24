@@ -276,6 +276,8 @@ private void createToolBar() {
 	
 	public LicencesForm(){
 		getContentPane().setLayout(new BorderLayout());
+		pack();
+		setLocationRelativeTo(null);
 		
 		createMenu();
 		
@@ -502,7 +504,7 @@ private void createToolBar() {
 	}
 	
 	private ILicence getInstance() throws RemoteException, NotBoundException{
-		Registry registry = LocateRegistry.getRegistry("localhost", Constant.RMI_PORT);
+		Registry registry = LocateRegistry.getRegistry(Constant.RMI_HOST, Constant.RMI_PORT);
 		ILicence licence = (ILicence) registry.lookup(Constant.RMI_LICENCE_ID);
 		return licence.newInstance();
 	}
