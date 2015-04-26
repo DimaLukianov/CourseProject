@@ -75,7 +75,6 @@ public class NewSoftwareForm extends JDialog {
 		setSize(400, 400);
 		setModal(true);
 		setResizable(false);
-		pack();
 		setLocationRelativeTo(null);
 
 		final JButton cmdSave = new JButton("Save");

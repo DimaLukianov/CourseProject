@@ -61,7 +61,6 @@ public class NewProducerForm extends JDialog {
 		setSize(350, 300);
 		setModal(true);
 		setResizable(false);
-		pack();
 		setLocationRelativeTo(null);
 
 		final JButton cmdSave = new JButton("Save");
